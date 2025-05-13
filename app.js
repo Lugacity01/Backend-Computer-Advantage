@@ -1,7 +1,11 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const maintenanceRoutes = require('./routes/maintenanceRoutes');
+
+app.use(cors());
+// app.options('*', cors())
 
 app.use(express.json());
 app.use('/', maintenanceRoutes);
