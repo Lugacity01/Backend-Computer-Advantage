@@ -15,4 +15,10 @@ const createMaintenance = (user, callback) => {
   // });
 };
 
-module.exports = { createMaintenance };
+
+const getAllMaintenance = (callback) => {
+  const sql = 'SELECT * FROM users'; // Adjust table name if needed
+  db.query(sql, callback);
+};
+
+module.exports = { createMaintenance, getAllMaintenance };
