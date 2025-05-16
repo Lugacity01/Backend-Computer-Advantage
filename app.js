@@ -3,6 +3,10 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const maintenanceRoutes = require('./routes/maintenanceRoutes');
+const { default: connectDB } = require('./config/dbMongo');
+
+
+connectDB();
 
 app.use(cors());
 // app.options('*', cors())

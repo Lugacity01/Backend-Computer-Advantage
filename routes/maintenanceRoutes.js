@@ -1,6 +1,7 @@
 const express = require('express');
+const { getMaintenance, createMaintenance, deleteMaintenance, updateMaintenance } = require('../controllers/maintenanceMongodbController');
 const router = express.Router();
-const { createMaintenance, deleteMaintenance, updateMaintenance, getMaintenance } = require('../controllers/maintenanceController');
+// const { createMaintenance, deleteMaintenance, updateMaintenance, getMaintenance } = require('../controllers/maintenanceController');
 
 
 router.get('/', (req, res) => {
@@ -14,7 +15,6 @@ router.post('/', createMaintenance);
 router.put('/', updateMaintenance);
 
 router.delete('/', deleteMaintenance);
-
 
 
 module.exports = router;

@@ -11,7 +11,7 @@ const createMaintenance = (user, callback) => {
   });
   // db.query(sql, [name, email], (err, result) => {
   //   if (err) return callback(err);
-  //   callback(null, result);
+  //   cactionallback(null, result);
   // });
 };
 
