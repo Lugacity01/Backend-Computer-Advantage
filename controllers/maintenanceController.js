@@ -20,7 +20,10 @@ const getMaintenance = (req, res) => {
 };
 
 const updateMaintenance = (req, res) => {
-  const maintenanceId = req.params.id;
+
+  console.log('Update Maintenance:', req.body);
+  console.log('Update Maintenance ID:', req.params.id);
+  const maintenanceId = req.body.id;
   const updateData = req.body;
 
   if (!updateData.sequence || !updateData.code || !updateData.name || !updateData.status || !updateData.action) {
@@ -35,7 +38,8 @@ const updateMaintenance = (req, res) => {
 };
 
 const deleteMaintenance = (req, res) => {
-  const maintenanceId = req.params.id;
+  
+  const maintenanceId = req.body.id;
 
   User.deleteMaintenanceById(maintenanceId, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
