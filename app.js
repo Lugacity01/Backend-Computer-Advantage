@@ -8,7 +8,7 @@ const { default: connectDB } = require('./config/dbMongo');
 
 connectDB();
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 // app.options('*', cors())
 
 app.use(express.json());
