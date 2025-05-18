@@ -8,6 +8,11 @@ const createMaintenance = async (req, res) => {
     if (!userData.sequence || !userData.code || !userData.name || !userData.status) {
         return res.status(400).json({ message: 'sequence, code, name, status, action are required' });
     }
+    // Check if code already exists
+    const existing = await Maintenance.findOne({ code: userData.code });
+    if (existing) {
+        return res.status(409).json({ message: 'Maintenance code already exists' });
+    }
     try {
         const maintenance = new Maintenance(userData);
         await maintenance.save();
@@ -32,6 +37,12 @@ const updateMaintenance = async (req, res) => {
     if (!updateData.sequence || !updateData.code || !updateData.name || !updateData.status || !updateData.action) {
         return res.status(400).json({ message: 'sequence, code, name, status, action are required' });
     }
+    
+    const existing = await Maintenance.findOne({ code: updateData.code });
+    if (existing) {
+        return res.status(409).json({ message: 'Maintenance code already exists' });
+    }
+    
     try {
         const result = await Maintenance.findByIdAndUpdate(maintenanceId, updateData, { new: true });
         if (!result) return res.status(404).json({ message: 'Maintenance not found' });
